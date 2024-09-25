@@ -4,8 +4,12 @@ import { MenuBarMobile } from './MenuBarMobile'
 import throttle from 'lodash.throttle'
 import SearchInput from './SearchInput'
 import DarkModeButton from '@/components/DarkModeButton'
-import LogoBar from './LogoBar'
+import SignInModeButton from '@/components/SignInModeButton'
+import SearchButton from './SearchButton'
 
+import LogoBar from './LogoBar'
+import { siteConfig } from '@/lib/config';
+import CONFIG from '../config';
 /**
  * 顶部导航栏 + 菜单
  * @param {} param0
@@ -69,10 +73,11 @@ export default function TopNavBar(props) {
               <div className='absolute top-0 right-5'>
                 {/* 搜索框、折叠按钮、仅移动端显示 */}
                 <div className='pt-1 flex md:hidden justify-end items-center space-x-3 font-serif dark:text-gray-200 '>
-                <div className='relative md:hidden top-0 right-0'>
-                  <SearchInput className='my-3 rounded-full' />
-                </div>
-                    <DarkModeButton className='flex text-md items-center h-full' />
+                    <div className='relative md:hidden top-0 right-0'>
+                      <SearchInput className='my-3 rounded-full' />
+                    </div>
+                    <div onClick={toggleMenuOpen}><SignInModeButton   className='flex text-md items-center h-full' /></div>
+                    {/* <DarkModeButton className='flex text-md items-center h-full' /> */}
                     <div onClick={toggleMenuOpen} className='w-4 text-center cursor-pointer text-lg hover:scale-110 duration-150'>
                         {isOpen ? <i className='fas fa-times' /> : <i className="fa-solid fa-ellipsis-vertical"/>}
                     </div>
@@ -81,8 +86,19 @@ export default function TopNavBar(props) {
                 {/* 桌面端顶部菜单 */}
                 <div className='hidden md:flex'>
                     {/* {links && links?.map((link, index) => <MenuItemDrop key={index} link={link} />)} */}
-                    <SearchInput className='my-3 rounded-full' />
-                    <DarkModeButton className='my-5 mr-6 text-sm flex items-center h-full pt-px' />
+                    <SearchInput className='my-3 rounded-full ' />
+                    {/* SearchButton是登录按钮 */}
+                    <SearchButton {...props}  /> 
+                    {/* <DarkModeButton className='my-5 mr-6 text-sm flex items-center h-full pt-px' /> */}
+
+
+         
+                            {/* <a onClick={toggleMenuOpen}
+                            href='javascript:void(0)'
+                            className={`signUpBtn text-white rounded-md bg-white bg-opacity-20 px-6 py-2 my-5 mr-6 flex items-center h-full pt-px signup-text-base font-medium duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark`}
+                            >
+                           {siteConfig('STARTER_NAV_BUTTON_1_TEXT', null, CONFIG)}
+                            </a> */}
                 </div>
               </div>
             </div>

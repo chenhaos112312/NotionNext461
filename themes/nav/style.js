@@ -97,6 +97,18 @@ const Style = () => {
     .dark body{
         background-color: black;
     }
+     
+    .signup-text-base {
+        font-size: 1.0rem /* 8px */;
+        line-height: 1.0rem /* 16px */;
+        height:2rem;
+        cursor:pointer;
+    }
+    .mt{
+        margin:0 auto;
+    }    
+
+   
 
   `}</style>
 }
